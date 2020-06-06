@@ -1,16 +1,18 @@
 package Lesson2;
 
+import java.util.Scanner;
+
 /**
  * Подсчёт зарплаты с учётом НДФЛ
  */
 public class Task2 {
     public static void main(String[] args) {
-        if (args.length > 0) {
-            double salary = Double.parseDouble(args[0]);
-            double ndflCorrection = 1.0 - 0.13;
-            System.out.println("Итоговая зарплата: " + (salary * ndflCorrection) + " рублей.");
-        } else {
-            System.out.println("Ошибка: Не указаны начальные данные");
-        }
+        double ndflCorrection = 1.0 - 0.13;
+
+        Scanner systemInScanner = new Scanner(System.in);
+        System.out.println("Введите зарплату:");
+        double salary = systemInScanner.nextDouble();
+
+        System.out.println("Итоговая зарплата: " + (salary * ndflCorrection) + " рублей.");
     }
 }
