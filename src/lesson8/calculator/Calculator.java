@@ -27,11 +27,10 @@ public class Calculator {
         return expression.trim().replaceAll("\\s+", " ");
     }
 
-    private double calcBracketLine(String expressionLine) throws CalculationException {
+    private double calcBracketLine(String startExpressionLine) throws CalculationException {
         ArrayDeque<Integer> bracketPositions = new ArrayDeque<>();
-        String leftPartLine;
-        String middlePartLine;
-        String rightPartLine;
+        StringBuilder expressionLine = new StringBuilder(startExpressionLine);
+        double bracketResult;
         int leftBracketPos;
         int rightBracketPos;
 
@@ -52,13 +51,9 @@ public class Calculator {
 
                 leftBracketPos = bracketPositions.pop();
 
-                leftPartLine = expressionLine.substring(0, leftBracketPos);
-                middlePartLine = String.valueOf(
-                        calcSimpleLine(expressionLine.substring(leftBracketPos + 1, rightBracketPos))
-                );
-                rightPartLine = expressionLine.substring(rightBracketPos + 1);
-
-                expressionLine = leftPartLine + middlePartLine + rightPartLine;
+                bracketResult = calcSimpleLine(expressionLine.substring(leftBracketPos + 1, rightBracketPos));
+                expressionLine.delete(leftBracketPos, rightBracketPos + 1);
+                expressionLine.insert(leftBracketPos, bracketResult);
 
                 bracketPositions.clear();
             } else {
@@ -68,7 +63,7 @@ public class Calculator {
             }
         } while (rightBracketPos > 0);
 
-        return calcSimpleLine(expressionLine);
+        return calcSimpleLine(expressionLine.toString());
     }
 
     public void run() {
