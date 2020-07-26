@@ -9,3 +9,11 @@ repositories {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+mainClassName = 'lesson17.Main'
+
+dependencies {
+    implementation 'org.json:json:20200518'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.10'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+}
