@@ -44,5 +44,22 @@ public class Arrays {
         for (Integer[] integers : multidimensionalArray) {
             System.out.println(java.util.Arrays.toString(integers));
         }
+
+        reverseExample(multidimensionalArray[0]);
+    }
+
+    public static void reverseExample(Object[] array) {
+        System.out.println(java.util.Arrays.toString(array));
+
+        for (int i = 0; i < array.length / 2; i++) {
+            int reverseI = array.length - i - 1;
+            Object temp = array[i];
+
+            array[i] = array[reverseI];
+            array[reverseI] = temp;
+        }
+
+        System.out.println();
+        System.out.println(java.util.Arrays.toString(array));
     }
 }
