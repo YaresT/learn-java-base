@@ -16,4 +16,4 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
 }
 
-mainClassName = 'lesson18.Main'
+mainClassName = 'application.Main'
