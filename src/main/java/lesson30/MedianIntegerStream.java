@@ -14,7 +14,7 @@ class MedianIntegerStream {
         maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
     }
 
-    public void add(final int num) {
+    public void insert(final int num) {
         if (minHeap.size() == maxHeap.size()) {
             maxHeap.offer(num);
             minHeap.offer(maxHeap.poll());
@@ -36,5 +36,13 @@ class MedianIntegerStream {
         }
 
         return median;
+    }
+
+    public void removeMedian() {
+        if (minHeap.size() > maxHeap.size()) {
+            minHeap.poll();
+        } else {
+            maxHeap.poll();
+        }
     }
 }
