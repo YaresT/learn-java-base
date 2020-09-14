@@ -2,6 +2,8 @@ package lesson32;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 
@@ -18,7 +20,10 @@ public class SitePageFinder {
 
     private final URL baseUrl;
 
-    private final HttpClient client = HttpClients.createDefault();
+    private final HttpClient client = HttpClients.custom()
+            .setDefaultRequestConfig(RequestConfig.custom()
+                .setCookieSpec(CookieSpecs.STANDARD).build())
+            .build();
 
     private final Set<URL> completePages = new HashSet<>();
 
